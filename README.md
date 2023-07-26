@@ -1,4 +1,4 @@
-# ext-springboot-test [![green](https://github.com/Sally1005/ext-springboot-test/actions/green.yml/badge.svg)](https://github.com/Sally1005/ext-springboot-test/actions/green.yml)
+# ext-springboot-test [![green](https://img.shields.io/Sally1005/ext-springboot-test/green)](https://github.com/Sally1005/ext-springboot-test/actions)
 
 # 项目介绍
 
