@@ -1,0 +1,42 @@
+#/**
+# * green.yml (该文件主要作用是在每日 00：00 时自动提交一个空的 commit,使 Github Profile 页面上每天保持有小绿点。)
+# *
+# * @author 张利红
+# */
+
+# 定义 workflow名称，作用类似标签
+name: green
+
+# 定义触发这个事件。包括push、pull_request、release、schedule等
+on:
+  # 表示当有代码提交到指定的分支时触发 workflow
+  push:
+    branches:
+      - main
+  # 表示定时触发 workflow
+  schedule:
+#    - cron: "0 0 * * *"
+     - cron: "* * * * *"
+
+# 定义具体的作业，包括作业名称、作业运行环境、运行权限等
+jobs:
+  auto green:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    # 表示具体步骤，用于指定作业的运行顺序和具体的操作指令
+    steps:
+      - name: Clone repository
+        # 使用 actions/checkout 代替 Git,从当前的分支检出代码
+        uses: actions/checkout@v3
+
+      - name: Auto green
+        # 表示要执行的操作命令,此处使用的是 Git 命令进行自动提交，每天都会生成一个提交记录
+        run: |
+          git config --local user.email "1564358705@qq.com"
+          git config --local user.name "${{ github.actor }}"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git pull --rebase
+          git commit --allow-empty -m "a commit a day keeps your boyfriend away"
+          git push
