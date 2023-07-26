@@ -1,3 +1,5 @@
+# ext-springboot-test [![green](https://github.com/Sally1005/ext-springboot-test/actions/green.yml/badge.svg)](https://github.com/Sally1005/ext-springboot-test/actions/green.yml)
+
 # 项目介绍
 
 该工程的主要目的是学会如何进行单元测试和集成测试。所做的注册功能只包含后端，没有使用浏览器。陆续会实现登录功能，以便搭建权限管理页面。
